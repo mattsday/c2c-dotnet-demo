@@ -1,0 +1,10 @@
+applications:
+- name: c2c-backend-dotnet
+  memory: 1024M
+  instances: 1
+  buildpack: https://github.com/cloudfoundry/dotnet-core-buildpack.git
+  path: bin/Debug/netcoreapp2.0/publish
+  services: [ c2c-registry ]
+  random-route: true
+
+
