@@ -12,7 +12,6 @@ namespace c2c_frontend.Controllers
     {
         private DiscoveryHttpClientHandler _handler;
         private string _backendBaseUrl;
-        private int _port;
 
         public FrontendController(IDiscoveryClient client, IConfiguration configuration)
         {
