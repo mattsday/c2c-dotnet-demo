@@ -69,6 +69,11 @@ It may take a couple of seconds to work, but repeating the frontend request shou
 Remote hello from c2c-backend (IP: 10.240.155.75:8080)
 ```
 
+You can be sure it's working properly by removing the route from the backend app:
+```
+cf unmap-route c2c-backend-dotnet mydomain --hostname c2c-backend-dotnet-random
+```
+
 You can then disable the policy again if you like:
 ```
 cf remove-network-policy c2c-frontend --destination-app c2c-backend --port 8080 --protocol tcp
