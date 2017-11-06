@@ -14,10 +14,10 @@ The frontend simply prints out whatever the backend sends it, or an error if it 
 ## Building
 ```
 pushd c2c-frontend
-dotnet publish
+dotnet publish -c Release
 popd
 pushd c2c-backend
-dotnet publish
+dotnet publish -c Release
 popd
 ```
 
