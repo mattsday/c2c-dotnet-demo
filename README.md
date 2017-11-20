@@ -58,6 +58,17 @@ cf push
 popd
 ```
 
+## Self-signed certificates
+If you're using self-signed certificates, Eureka registration won't work by default. To enable it, add your API server to the trust store:
+```
+$ cf set-env c2c-backend-dotnet TRUST_CERTS api.apps.mydomain.com
+$ cf set-env c2c-frontend-dotnet TRUST_CERTS api.apps.mydomain.com
+```
+Now restart the apps:
+```
+cf restart c2c-backend-dotnet && cf restart c2c-frontend-dotnet
+```
+
 Verify the backend app is working as intended by visiting it, for example:
 ```
 $ curl http://c2c-backend-dotnet-random.cfapps.io/ping
@@ -80,7 +91,7 @@ Could not reach backend (networking problem?)
 
 Enable C2C networking between the apps:
 ```
-cf add-network-policy c2c-frontend --destination-app c2c-backend
+cf add-network-policy c2c-frontend-dotnet --destination-app c2c-backend-dotnet
 ```
 
 It may take a couple of seconds to work, but repeating the frontend request should now show it's connected to the backend directly:
@@ -95,7 +106,7 @@ cf unmap-route c2c-backend-dotnet mydomain --hostname c2c-backend-dotnet-random
 
 You can then disable the policy again if you like:
 ```
-cf remove-network-policy c2c-frontend --destination-app c2c-backend --port 8080 --protocol tcp
+cf remove-network-policy c2c-frontend-dotnet --destination-app c2c-backend-dotnet --port 8080 --protocol tcp
 ```
 ## Advanced Testing
 There is a basic website available on the frontend component that allows a bit more advanced testing.
