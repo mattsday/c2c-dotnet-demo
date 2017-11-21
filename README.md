@@ -1,6 +1,8 @@
 # C2C PoC Code (.NET Core Edition!)
 Pair of backend/frontend apps to demonstrate C2C networking in Pivotal Cloud Foundry - using .NET Core 2.0
 
+![GUI Screenshot](screenshot.png)
+
 ## Requirements
 * PCF with container networking enabled (1.12 or later recommended)
 * Spring cloud services with service registry
